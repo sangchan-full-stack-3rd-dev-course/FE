@@ -12,3 +12,15 @@ export interface ILogItem {
     logMessage : string,
     logTimeStamp : string,
 }
+
+export interface IList {
+    listId : string,
+    listName : string,
+    tasks : ITask[]
+}
+
+export interface IBoard {
+    boardId : string,
+    boardName : string,
+    lists : IList[]
+}
