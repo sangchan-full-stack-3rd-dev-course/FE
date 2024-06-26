@@ -4,6 +4,7 @@ import { addList, addTask } from '../../../store/slices/boardSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { addLog } from '../../../store/slices/loggerSlice';
 import { useDispatch } from 'react-redux';
+import { button, buttons, close, input, listForm, taskForm } from './DropDownForm.css';
 
 interface DropDownFormProps {
   setIsFormOpen : React.Dispatch<React.SetStateAction<boolean>>;
@@ -71,19 +72,20 @@ const DropDownForm: React.FC<DropDownFormProps>= ({
   }
 
   return (
-    <div>
+    <div className={isList ? listForm : taskForm}>
       <textarea
+        className={input}
         autoFocus
         value ={text}
         placeholder={formPlaceholder}
         onChange={handleTextChange}
         // onBlur={()=>setIsFormOpen(false)}
       />
-      <div>
-        <button onMouseDown={handleButtonClick}>
+      <div className={buttons}>
+        <button className={button} onMouseDown={handleButtonClick}>
           {buttonTitle}
         </button>
-        <FiX/>
+        <FiX className={close}/>
       </div>
     </div>
   )
