@@ -1,5 +1,6 @@
 import React from 'react'
 import { ITask } from '../../types'
+import { container, description, title } from './Task.css'
 
 interface TaskProps {
     task : ITask,
@@ -9,7 +10,10 @@ interface TaskProps {
 
 const Task : React.FC<TaskProps> = ({task, boardId, index}) => {
   return (
-    <div>Task</div>
+    <div className={container}>
+      <div className={title}>{task.taskName}</div>
+      <div className={description}>{task.taskDescription}</div>
+    </div>
   )
 }
 
