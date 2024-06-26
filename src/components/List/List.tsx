@@ -53,7 +53,7 @@ const List: React.FC<ListProps> = ({list, boardId}) => {
                 <GrSubtract className={deleteButton} onClick={()=> handleListDelete(list.listId)}/>
             </div>
             {renderList()}
-            <ActionButton/>
+            <ActionButton boardId={boardId} listId={list.listId} isList={false}/>
         </div>
     )
 }

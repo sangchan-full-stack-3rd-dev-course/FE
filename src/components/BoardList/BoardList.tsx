@@ -46,7 +46,6 @@ const BoardList:React.FC<BoardListProps> = ({activeBoardId, setActiveBoardId}) =
         setTimeout(() =>{
             inputRef.current?.focus();
         }, 0);
-        console.log(boards);
     };
 
     return (

@@ -21,10 +21,6 @@ const SideForm:React.FC<SideFormProps> = ({setIsFormOpen, inputRef}) => {
     setInputText(e.target.value);
   }
 
-  const handleOnblur = () => {
-    setIsFormOpen(false)
-  };
-
   const handleClick = () => {
     if(inputText){
       dispatch(
@@ -46,6 +42,7 @@ const SideForm:React.FC<SideFormProps> = ({setIsFormOpen, inputRef}) => {
         })
       )
     }
+    setIsFormOpen(false)
   };
 
   return (
@@ -58,7 +55,6 @@ const SideForm:React.FC<SideFormProps> = ({setIsFormOpen, inputRef}) => {
         placeholder='새로운 게시판 등록하기'
         value={inputText}
         onChange={handleChange}
-        onBlur={handleOnblur}
       />
       <FiCheck className={icon} onClick={handleClick}/>
     </div>

@@ -20,7 +20,7 @@ const ListsContainer: React.FC<ListsContainerProps> = ({lists, boardId}) => {
     return (
         <div className={listsContainer}>
             {renderLists()}
-            <ActionButton/>
+            <ActionButton boardId={boardId} listId={""} isList={true}/>
         </div>
     )
 }
