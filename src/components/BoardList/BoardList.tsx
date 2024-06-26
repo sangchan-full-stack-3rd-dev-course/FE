@@ -16,19 +16,8 @@ const BoardList:React.FC<BoardListProps> = ({activeBoardId, setActiveBoardId}) =
     const [isFormOpen, setIsFormOpen] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleClick = () =>{
-        setIsFormOpen(!isFormOpen);
-        setTimeout(() =>{
-            inputRef.current?.focus();
-        }, 0);
-    };
-
-    return (
-        <div className={container}>
-            <div className={title}>
-                게시판 : 
-            </div>
-            {boards.map((board, index)=>{
+    const renderBoards = () => {
+        return boards.map((board, index)=>{
                 return (
                     <div key={board.boardId}
                         onClick={()=> setActiveBoardId(boards[index].boardId)}
@@ -49,7 +38,23 @@ const BoardList:React.FC<BoardListProps> = ({activeBoardId, setActiveBoardId}) =
                         </div>
                     </div>
                 );
-            })}
+        })
+    };
+
+    const handleClick = () =>{
+        setIsFormOpen(!isFormOpen);
+        setTimeout(() =>{
+            inputRef.current?.focus();
+        }, 0);
+        console.log(boards);
+    };
+
+    return (
+        <div className={container}>
+            <div className={title}>
+                게시판 : 
+            </div>
+            {renderBoards()}
             <div className={addSection}>
                 {
                     isFormOpen ?
