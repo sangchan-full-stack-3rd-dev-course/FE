@@ -1,8 +1,10 @@
-import React from 'react'
+interface SideFormProps {
+  setIsFormOpen : React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const SideForm = () => {
+const SideForm:React.FC<SideFormProps> = ({setIsFormOpen}) => {
   return (
-    <div>SideForm</div>
+    <div onClick={()=>setIsFormOpen}>SideForm</div>
   )
 }
 
