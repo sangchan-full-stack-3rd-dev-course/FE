@@ -1,6 +1,7 @@
 import React from 'react'
 import { ILogItem } from '../../../types'
 import { BsFillPersonFill } from 'react-icons/bs'
+import { author, date, logItemWrap, message } from './LogItem.css'
 
 interface LogItemProps {
   logItem : ILogItem
@@ -16,13 +17,13 @@ const LogItem : React.FC<LogItemProps> = ({logItem}) => {
   `;
 
   return (
-    <div>
-      <div>
+    <div className={logItemWrap}>
+      <div className={author}>
         <BsFillPersonFill />
         {logItem.logAuthor}
       </div>
-      <div>{logItem.logMessage}</div>
-      <div>{showOffsetTime}</div>
+      <div className={message}>{logItem.logMessage}</div>
+      <div className={date}>{showOffsetTime}</div>
     </div>
   )
 }
