@@ -10,6 +10,10 @@ type TAddBoardAction = {
     board : IBoard;
 }
 
+type TDeleteBoardAction = {
+    boardId : string;
+}
+
 type TAddListAction = {
     boardId : string;
     list : IList;
@@ -80,6 +84,9 @@ const boardSlice = createSlice({
     reducers : {
         addBoard : (state, action : PayloadAction<TAddBoardAction>) => {
             state.boardArray.push(action.payload.board);
+        },
+        deleteBoard : (state, action : PayloadAction<TDeleteBoardAction>) => {
+            state.boardArray = state.boardArray.filter(board => board.boardId !== action.payload.boardId)
         },
         addList : (state, action : PayloadAction<TAddListAction>) => {
             state.boardArray.map(board => board.boardId === action.payload.boardId 
@@ -167,6 +174,6 @@ const boardSlice = createSlice({
     }
 });
 
-export const {addBoard, addList, addTask, updateTask, deleteTask, deleteList, setModalActive} = boardSlice.actions;
+export const {addBoard, deleteBoard, addList, addTask, updateTask, deleteTask, deleteList, setModalActive} = boardSlice.actions;
 export const boardReducer = boardSlice.reducer;
 
