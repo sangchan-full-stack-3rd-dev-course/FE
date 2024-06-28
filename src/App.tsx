@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { deleteBoard } from './store/slices/boardSlice.ts';
 import { addLog } from './store/slices/loggerSlice.ts';
 import { v4 as uuidv4 } from 'uuid';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,10 @@ function App() {
     setActiveBoardId(boards[newIndexToSet()].boardId);
   };
 
+  const handleDragEnd = (result : any) => {
+    console.log(result)
+  }
+
   return (
     <>
       <div className={appContainer}>
@@ -52,7 +57,9 @@ function App() {
         {modalActive ? <EdditModal/>: null}
         <BoardList activeBoardId={activeBoardId} setActiveBoardId={setActiveBoardId}/>
         <div className={board}>
-          <ListsContainer lists={lists} boardId={getActiveBoard.boardId}/>
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <ListsContainer lists={lists} boardId={getActiveBoard.boardId}/>
+          </DragDropContext>
         </div>
         <div className={buttons}>
           <button className={deleteBoardButton} onClick={handleDeleteBoard}>이 게시판 삭제하기</button>
