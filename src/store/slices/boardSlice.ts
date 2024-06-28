@@ -36,6 +36,15 @@ type TDeleteListAction = {
     listId : string;
 }
 
+type TSortAction = {
+    boardIndex : number;
+    droppableIdStart : string;
+    droppableIdEnd : string;
+    droppableIndexStart : number;
+    droppableIndexEnd : number;
+    draggableId : string;
+}
+
 const initialState : TBoardState = {
     modalActive : false,
     boardArray : [
@@ -170,10 +179,13 @@ const boardSlice = createSlice({
         },
         setModalActive : (state, action : PayloadAction<boolean>) => {
             state.modalActive = action.payload;
+        },
+        sort : (state, action : PayloadAction<TSortAction>) => {
+
         }
     }
 });
 
-export const {addBoard, deleteBoard, addList, addTask, updateTask, deleteTask, deleteList, setModalActive} = boardSlice.actions;
+export const {addBoard, deleteBoard, addList, addTask, updateTask, deleteTask, deleteList, setModalActive, sort} = boardSlice.actions;
 export const boardReducer = boardSlice.reducer;
 
