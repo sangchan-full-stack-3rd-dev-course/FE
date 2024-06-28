@@ -42,7 +42,7 @@ const List: React.FC<ListProps> = ({list, boardId}) => {
     const renderList = () => {
         return list.tasks.map((task, index)=>{
             return <div key={task.taskId} onClick={()=>handleTaskChange(boardId, list.listId, task)}>
-                <Task index={index} boardId={boardId} task={task}/>
+                <Task index={index} task={task}/>
             </div>;
         })
     }

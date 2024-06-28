@@ -14,7 +14,7 @@ const LoggerModal : React.FC<LoggerModalProps> = ({ setIsLoggerOpen }) => {
 
     const renderLogs = () => {
         return (
-            logs.map((log, index) => (
+            logs.map((log) => (
                 <LogItem key={log.logId} logItem={log} />
             ))
         );
