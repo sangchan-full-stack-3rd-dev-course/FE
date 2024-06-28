@@ -181,7 +181,26 @@ const boardSlice = createSlice({
             state.modalActive = action.payload;
         },
         sort : (state, action : PayloadAction<TSortAction>) => {
+            if(action.payload.droppableIdStart === action.payload.droppableIdEnd){
+                const list = state.boardArray[action.payload.boardIndex].lists.find(
+                    list => list.listId === action.payload.droppableIdStart
+                );
 
+                const card = list?.tasks.splice(action.payload.droppableIndexStart, 1);
+                list?.tasks.splice(action.payload.droppableIndexEnd, 0,  ...card!);
+            }
+
+            else {
+                const listStart = state.boardArray[action.payload.boardIndex].lists.find(
+                    list => list.listId === action.payload.droppableIdStart
+                );
+                const listEnd = state.boardArray[action.payload.boardIndex].lists.find(
+                    list => list.listId === action.payload.droppableIdEnd
+                );
+
+                const card = listStart?.tasks.splice(action.payload.droppableIndexStart, 1);
+                listEnd?.tasks.splice(action.payload.droppableIndexEnd, 0,...card!);
+            }
         }
     }
 });
